@@ -4,11 +4,12 @@ import AccountDialog from '../components/navbar/AccountDialog';
 
 function mapStateToProps(state) {
   return {
-    userInfo: state.userInfo,
+    userInfo: state.appState.userInfo,
+    logged: state.appState.logged,
   };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
     updateLoginForm: (e, value) => {
       dispatch(updateLoginForm({

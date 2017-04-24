@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import { NavBar } from '.';
+import SmartNavBar from '../containers/SmartNavBar';
 
 export default class App extends Component {
   render() {
     return (
-      <NavBar {...this.props} />
+      <SmartNavBar {...this.props} />
     );
   }
 }
