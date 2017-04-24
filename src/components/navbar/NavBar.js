@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import AccountBox from 'material-ui/svg-icons/action/account-circle'
 
-import AccountDialog from './AccountDialog';
+import SmartAccountDialog from '../../containers/SmartAccountDialog';
 
 const Login = (props) => (
   <RaisedButton
@@ -21,13 +21,13 @@ Login.muiName = 'FlatButton';
 
 const Logged = (props) => (
   <IconMenu
-      {...props}
-      iconButtonElement={
-        <IconButton><MoreVertIcon /></IconButton>
-      }
-      targetOrigin={{horizontal: 'right', vertical: 'top'}}
-      anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
+    {...props}
+    iconButtonElement={
+      <IconButton><MoreVertIcon /></IconButton>
+    }
+    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+  >
     <MenuItem primaryText="Refresh" />
     <MenuItem primaryText="Help" />
     <MenuItem primaryText="Sign out" />
@@ -40,10 +40,9 @@ export default class NavBar extends Component {
 
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
 
     this.state = {
-      isLoginOpen: false,
+      isLoginOpen: true || false,
     };
   }
 
@@ -55,10 +54,6 @@ export default class NavBar extends Component {
     this.setState({isLoginOpen: false});
   }
 
-  handleLogin() {
-    console.log('Login process');
-  }
-
   render() {
     return (
       <div>
@@ -66,7 +61,7 @@ export default class NavBar extends Component {
           title="checkin BETA"
           iconElementRight={this.props.logged ? <Logged /> : <Login onTouchTap={this.handleOpen} />}
         />
-        <AccountDialog
+        <SmartAccountDialog
           isLoginOpen={this.state.isLoginOpen}
           handleClose={this.handleClose}
         />

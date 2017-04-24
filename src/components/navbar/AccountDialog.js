@@ -9,16 +9,24 @@ import Assignment from 'material-ui/svg-icons/action/assignment'
 export default class AccountDialog extends Component {
   renderLoginTab() {
     return (
-      <Tab label="Login" icon={<AccountBox />}>
+      <Tab
+        label="Login"
+        icon={<AccountBox />}
+        onActive={this.props.updateActiveTab}
+      >
         <TextField
-          hintText="Email"
-          floatingLabelText="Email"
+          hintText="Username"
+          floatingLabelText="Username"
+          name="username"
+          onChange={this.props.updateLoginForm}
         />
         <br/>
         <TextField
           hintText="Password"
           floatingLabelText="Password"
+          name="password"
           type="password"
+          onChange={this.props.updateLoginForm}
         />
       </Tab>
     );
@@ -26,7 +34,11 @@ export default class AccountDialog extends Component {
 
   renderRegisterTab() {
     return (
-      <Tab label="Register" icon={<Assignment />}>
+      <Tab
+        label="Register"
+        icon={<Assignment />}
+        onActive={this.props.updateActiveTab}
+      >
         <br/>
         <TextField
           hintText="Name*"
@@ -52,12 +64,12 @@ export default class AccountDialog extends Component {
     const actions = [
       <FlatButton
         label="Cancel"
-        onTouchTap={this.handleLogin}
+        onTouchTap={this.props.handleClose}
       />,
       <FlatButton
         label="Submit"
         primary={true}
-        onTouchTap={this.handleLogin}
+        onTouchTap={this.props.handleSubmit}
       />,
     ];
 

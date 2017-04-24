@@ -1,0 +1,32 @@
+import { connect } from 'react-redux';
+import { login, updateLoginForm, updateAccountDialogActiveTab } from '../actions/actions';
+import AccountDialog from '../components/navbar/AccountDialog';
+
+function mapStateToProps(state) {
+  return {
+    userInfo: state.userInfo,
+  };
+}
+
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    updateLoginForm: (e, value) => {
+      dispatch(updateLoginForm({
+        [e.target.name]: value,
+      }));
+    },
+
+    updateActiveTab: (tab) => {
+      dispatch(updateAccountDialogActiveTab(tab.props.label));
+    },
+
+    handleSubmit: (e) => {
+      dispatch(login());
+    }
+  };
+}
+
+const SmartAccountDialog = connect(mapStateToProps, mapDispatchToProps)(AccountDialog);
+
+export default SmartAccountDialog;
+
