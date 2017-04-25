@@ -12,11 +12,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     handleOpen: () => {
-      dispatch(openLoginDialog);
+      dispatch(openLoginDialog());
     },
 
     handleClose: () => {
-      dispatch(closeLoginDialog);
+      dispatch(closeLoginDialog());
     },
   };
 };

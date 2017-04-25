@@ -4,9 +4,30 @@ import {
   UPDATE_LOGIN_FORM,
   UPDATE_LOGIN_ERROR,
   UPDATE_USER,
+  UPDATE_IS_SNACKBAR_SHOW,
   CLOSE_LOGIN_DIALOG,
   OPEN_LOGIN_DIALOG,
 } from '../constants/actionTypes';
+
+function loginStart() {
+  return {
+    type: UPDATE_IS_SNACKBAR_SHOW,
+    payload: {
+      isShow: true,
+      msg: 'We are logging you in. Please wait...',
+    },
+  }
+}
+
+function loginEnd() {
+  return {
+    type: UPDATE_IS_SNACKBAR_SHOW,
+    payload: {
+      isShow: true,
+      msg: 'Log in success!',
+    },
+  }
+}
 
 function loginFail(data) {
   return {
@@ -38,12 +59,14 @@ function putLogin(loginInfo) {
   }
 
   return (dispatch, getState) => {
+    dispatch(loginStart());
     fetch('https://commandp-lbs-backend.herokuapp.com/api/v1/login', {
       body: JSON.stringify(loginInfo),
       headers: { 'Content-Type': 'application/json' },
       method: 'PUT',
     }).then(checkStatus).then(parseJSON).then((data) => {
       dispatch(loginSuccess(data));
+      dispatch(loginEnd());
     }).catch((error) => {
       dispatch(loginFail(error));
     })

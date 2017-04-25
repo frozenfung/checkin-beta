@@ -4,6 +4,8 @@ import App from '../components/App';
 function mapStateToProps(state) {
   return {
     logged: state.appState.logged,
+    isSnackbarShow: state.appState.isSnackbarShow,
+    snackbarMsg: state.appState.snackbarMsg,
   };
 };
 
