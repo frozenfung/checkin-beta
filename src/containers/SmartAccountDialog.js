@@ -6,6 +6,8 @@ function mapStateToProps(state) {
   return {
     userInfo: state.appState.userInfo,
     logged: state.appState.logged,
+    username: state.login.username,
+    password: state.login.password,
   };
 }
 

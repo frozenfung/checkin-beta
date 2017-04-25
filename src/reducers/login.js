@@ -1,8 +1,8 @@
 import { UPDATE_LOGIN_FORM } from '../constants/actionTypes';
 
 const initState = {
-  username: '',
-  password: '',
+  username: 'fung',
+  password: 'fung',
 };
 
 export default function login(state = initState, action) {

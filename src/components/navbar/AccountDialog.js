@@ -19,6 +19,7 @@ export default class AccountDialog extends Component {
           floatingLabelText="Username"
           name="username"
           onChange={this.props.updateLoginForm}
+          value={this.props.username}
         />
         <br/>
         <TextField
@@ -27,6 +28,7 @@ export default class AccountDialog extends Component {
           name="password"
           type="password"
           onChange={this.props.updateLoginForm}
+          value={this.props.password}
         />
       </Tab>
     );
