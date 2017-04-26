@@ -3,6 +3,7 @@ import {
   UPDATE_LOGIN_FORM,
   UPDATE_LOGIN_ERROR,
   UPDATE_USER,
+  DELETE_USER,
   CLOSE_LOGIN_DIALOG,
   OPEN_LOGIN_DIALOG,
 } from '../constants/actionTypes';
@@ -11,6 +12,16 @@ import putLogin from './login';
 
 function postRegister(registerInfo) {
 
+}
+
+export function logout() {
+  return {
+    type: DELETE_USER,
+    payload: {
+      isShow: true,
+      msg: 'Logged out successfully!',
+    },
+  };
 }
 
 export function login() {

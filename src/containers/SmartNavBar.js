@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import { NavBar } from '../components';
-import { openLoginDialog, closeLoginDialog } from '../actions/actions';
+import {
+  openLoginDialog,
+  closeLoginDialog,
+  logout,
+} from '../actions/actions';
 
 function mapStateToProps(state) {
   return {
@@ -17,6 +21,10 @@ function mapDispatchToProps(dispatch) {
 
     handleClose: () => {
       dispatch(closeLoginDialog());
+    },
+
+    handleLogout: () => {
+      dispatch(logout());
     },
   };
 };

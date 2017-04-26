@@ -8,11 +8,14 @@ import SmartAccountDialog from '../../containers/SmartAccountDialog';
 
 export default class NavBar extends Component {
   render() {
+    const elementRight = this.props.logged ?
+      <Logged onTouchTap={this.props.handleLogout} /> :
+      <Login onTouchTap={this.props.handleOpen} />
     return (
       <div>
         <AppBar
           title="checkin BETA"
-          iconElementRight={this.props.logged ? <Logged /> : <Login onTouchTap={this.props.handleOpen} />}
+          iconElementRight={elementRight}
         />
         <SmartAccountDialog
           isLoginOpen={this.props.isLoginOpen}

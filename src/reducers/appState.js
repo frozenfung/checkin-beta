@@ -1,10 +1,23 @@
 import {
   UPDATE_ACCOUNT_DIALOG_ACTIVE_TAB,
   UPDATE_USER,
+  DELETE_USER,
   CLOSE_LOGIN_DIALOG,
   OPEN_LOGIN_DIALOG,
   UPDATE_IS_SNACKBAR_SHOW,
 } from '../constants/actionTypes';
+
+const initUserInfo = {
+  access_token: '',
+  expires_at: '',
+  user: {
+    id: 0,
+    username: '',
+    email: '',
+    display_name: '',
+    avatar: null,
+  },
+};
 
 const initState = {
   accountDialogActiveTab: 'Login',
@@ -12,17 +25,7 @@ const initState = {
   isLoginOpen: true,
   isSnackbarShow: false,
   snackbarMsg: '',
-  userInfo: {
-    access_token: '',
-    expires_at: '',
-    user: {
-      id: 0,
-      username: '',
-      email: '',
-      display_name: '',
-      avatar: null,
-    },
-  },
+  userInfo: initUserInfo,
 };
 
 export default function appState(state = initState, action) {
@@ -45,6 +48,13 @@ export default function appState(state = initState, action) {
         userInfo: action.payload,
         logged: true,
         isLoginOpen: false,
+      });
+    case DELETE_USER:
+      return Object.assign({}, state, {
+        userInfo: initUserInfo,
+        logged: false,
+        isSnackbarShow: action.payload.isShow,
+        snackbarMsg: action.payload.msg,
       });
     case UPDATE_ACCOUNT_DIALOG_ACTIVE_TAB:
       return Object.assign({}, state, {
