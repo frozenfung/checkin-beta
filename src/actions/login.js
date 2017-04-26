@@ -56,7 +56,7 @@ export default function putLogin(loginInfo) {
 
   return (dispatch, getState) => {
     dispatch(loginStart());
-    fetch('https://commandp-lbs-backend.herokuapp.com/api/v1/login', {
+    return fetch('https://commandp-lbs-backend.herokuapp.com/api/v1/login', {
       body: JSON.stringify(loginInfo),
       headers: { 'Content-Type': 'application/json' },
       method: 'PUT',
@@ -65,7 +65,7 @@ export default function putLogin(loginInfo) {
       dispatch(loginEnd());
     }).catch((error) => {
       dispatch(loginFail(error));
-    })
+    });
   };
 }
 

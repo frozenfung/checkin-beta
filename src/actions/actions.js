@@ -29,9 +29,9 @@ export function login() {
     const action = getState().appState.accountDialogActiveTab;
 
     if (action === 'Login') {
-      dispatch(putLogin(getState().login));
+      return dispatch(putLogin(getState().login));
     } else {
-      dispatch(postRegister(getState().register));
+      return dispatch(postRegister(getState().register));
     }
   };
 }
