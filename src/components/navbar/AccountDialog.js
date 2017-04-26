@@ -7,6 +7,10 @@ import AccountBox from 'material-ui/svg-icons/action/account-circle'
 import Assignment from 'material-ui/svg-icons/action/assignment'
 
 export default class AccountDialog extends Component {
+  static defaultProps = {
+    isLoginOpen: true,  
+  };
+
   renderLoginTab() {
     return (
       <Tab

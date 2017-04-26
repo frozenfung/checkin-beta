@@ -5,6 +5,11 @@ import './App.css';
 import SmartNavBar from '../containers/SmartNavBar';
 
 export default class App extends Component {
+  static defaultProps = {
+    snackbarMsg: '',
+    isSnackbarShow: false,
+  };
+
   render() {
     return (
       <div>

@@ -5,6 +5,7 @@ checkin Beta
 
 - [create-react-app](https://github.com/facebookincubator/create-react-app)
 - [material-ui](https://github.com/callemall/material-ui)
+- [enzyme](https://github.com/airbnb/enzyme/)
 
 
 ### Have Done
@@ -13,6 +14,7 @@ checkin Beta
 - login components
 - few containers that connect components and their props
 - redux for data arrangement
+- few tests
 
 
 ### To be done
